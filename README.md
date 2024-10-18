@@ -9,8 +9,6 @@ A simple Library Management System built with Laravel that allows admins, librar
 - [Database](#database)
 - [Usage](#usage)
 - [Testing](#testing)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 - **Admin Panel**
