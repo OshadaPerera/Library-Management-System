@@ -11,8 +11,8 @@
 
 <body class="bg-gray-100 font-sans leading-normal tracking-normal">
 
-     <!-- Navbar -->
-     <nav class="bg-white shadow-lg">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between">
                 <div class="flex space-x-7">
@@ -28,10 +28,9 @@
                     </div>
                     <!-- Primary Navbar items -->
                     <div class="hidden md:flex items-center space-x-1">
-                        <a href="/" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Home</a>
-                        <a href="#"
-                            class="py-4 px-2 text-blue-500 border-b-4 border-blue-500 font-semibold">Books</a>
-                        <!-- Only admin can see the Users link -->
+                        <a href="/"
+                            class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Home</a>
+                        <a href="#" class="py-4 px-2 text-blue-500 border-b-4 border-blue-500 font-semibold">Books</a>
                         @if (auth()->check() && auth()->user()->role === 'admin')
                         <a href="/users"
                             class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Users</a>
@@ -41,15 +40,15 @@
                 <!-- Secondary Navbar items -->
                 <div class="hidden md:flex items-center space-x-3">
                     @if (auth()->check())
-                        <span class="py-2 px-2 font-medium text-gray-500">{{ auth()->user()->name }}</span>
-                        <a href="/logout"
-                            class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-red-500 hover:text-white transition duration-300">Logout</a>
+                    <span class="py-2 px-2 font-medium text-gray-500">{{ auth()->user()->name }}</span>
+                    <a href="/logout"
+                        class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-red-500 hover:text-white transition duration-300">Logout</a>
                     @else
-                        <a href="/login"
-                            class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-blue-500 hover:text-white transition duration-300">Login</a>
-                        <a href="/signup"
-                            class="py-2 px-2 font-medium text-white bg-blue-500 rounded hover:bg-blue-600 transition duration-300">Sign
-                            Up</a>
+                    <a href="/login"
+                        class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-blue-500 hover:text-white transition duration-300">Login</a>
+                    <a href="/signup"
+                        class="py-2 px-2 font-medium text-white bg-blue-500 rounded hover:bg-blue-600 transition duration-300">Sign
+                        Up</a>
                     @endif
                 </div>
             </div>
@@ -60,10 +59,10 @@
     <section class="py-20">
         <div class="container mx-auto px-6 lg:px-20">
             <div class="flex justify-between items-center mb-8">
-                <h1 class="text-3xl font-bold">Books</h1>
+                <h1 class="text-3xl font-bold text-gray-700">Books</h1>
                 <div class="w-full md:w-1/3">
                     <input
-                        class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
+                        class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500 shadow focus:shadow-lg transition duration-300"
                         type="text" placeholder="Search for books..." />
                 </div>
             </div>
@@ -85,43 +84,46 @@
             <!-- Book Table -->
             <div class="bg-white shadow-lg rounded-lg overflow-hidden">
                 <table class="min-w-full bg-white">
-                    <thead class="bg-gray-100 text-gray-600">
+                    <thead class="bg-blue-600 text-white">
                         <tr>
-                            <th class="py-2 px-4 text-left">Title</th>
-                            <th class="py-2 px-4 text-left">Author</th>
-                            <th class="py-2 px-4 text-left">Genre</th>
-                            <th class="py-2 px-4 text-left">ISBN</th>
-                            <th class="py-2 px-4 text-left">Available Copies</th>
+                            <th class="py-3 px-4 text-left">Title</th>
+                            <th class="py-3 px-4 text-left">Author</th>
+                            <th class="py-3 px-4 text-left">Genre</th>
+                            <th class="py-3 px-4 text-left">ISBN</th>
+                            <th class="py-3 px-4 text-left">Available Copies</th>
                             @if (auth()->check() && (auth()->user()->role === 'admin' || auth()->user()->role ===
-                            'librarian' || auth()->user()->role ==='student'))
-                            <th class="py-2 px-4 text-center">Actions</th>
+                            'librarian' || auth()->user()->role === 'student'))
+                            <th class="py-3 px-4 text-center">Actions</th>
                             @endif
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($books as $book)
-                        <tr>
-                            <td class="py-2 px-4 border-b border-gray-200">{{ $book['title'] }}</td>
-                            <td class="py-2 px-4 border-b border-gray-200">{{ $book['author'] }}</td>
-                            <td class="py-2 px-4 border-b border-gray-200">{{ $book['genre'] }}</td>
-                            <td class="py-2 px-4 border-b border-gray-200">{{ $book['isbn'] }}</td>
-                            <td class="py-2 px-4 border-b border-gray-200">{{ $book['quantity'] }}</td>
-                            <td class="py-2 px-4 border-b border-gray-200 text-center">
+                        <tr class="hover:bg-gray-100 transition duration-300">
+                            <td class="py-3 px-4 border-b border-gray-200">{{ $book['title'] }}</td>
+                            <td class="py-3 px-4 border-b border-gray-200">{{ $book['author'] }}</td>
+                            <td class="py-3 px-4 border-b border-gray-200">{{ $book['genre'] }}</td>
+                            <td class="py-3 px-4 border-b border-gray-200">{{ $book['isbn'] }}</td>
+                            <td class="py-3 px-4 border-b border-gray-200">{{ $book['quantity'] }}</td>
+                            @if (auth()->check() && (auth()->user()->role === 'admin' || auth()->user()->role ===
+                            'librarian' || auth()->user()->role === 'student'))
+                            <td class="py-3 px-4 border-b border-gray-200 text-center">
                                 @if (auth()->check() && (auth()->user()->role === 'admin' || auth()->user()->role ===
                                 'librarian'))
                                 <a href="/books/{{ $loop->index }}/edit"
-                                    class="bg-yellow-500 text-white px-3 py-1 rounded-lg hover:bg-yellow-600">Edit</a>
+                                    class="bg-yellow-500 text-white px-3 py-1 rounded-lg hover:bg-yellow-600 transition duration-300">Edit</a>
                                 <form action="/books/{{ $loop->index }}" method="POST" class="inline-block">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"
-                                        class="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600">Delete</button>
+                                        class="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition duration-300">Delete</button>
                                 </form>
                                 @elseif (auth()->check() && auth()->user()->role === 'student')
                                 <a href="/borrow/{{ $loop->index }}"
-                                    class="bg-blue-500 text-white px-3 py-1 rounded-lg hover:bg-blue-600">Borrow</a>
+                                    class="bg-blue-500 text-white px-3 py-1 rounded-lg hover:bg-blue-600 transition duration-300">Borrow</a>
                                 @endif
                             </td>
+                            @endif
                         </tr>
                         @endforeach
                     </tbody>
@@ -129,7 +131,9 @@
             </div>
             @if (auth()->check() && (auth()->user()->role === 'admin' || auth()->user()->role === 'librarian'))
             <div class="mt-6">
-                <a href="/books/create" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">Add New
+                <a href="/books/create"
+                    class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300">Add
+                    New
                     Book</a>
             </div>
             @endif
@@ -137,7 +141,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-6">
+    <footer class="bg-gray-800 text-white py-6 fixed bottom-0 w-full">
         <div class="container mx-auto px-6 lg:px-20 text-center">
             <p>&copy; 2024 Library Management System. All rights reserved.</p>
         </div>
